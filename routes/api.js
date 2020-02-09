@@ -92,7 +92,7 @@ router.put('/user/:id',(req,res)=>{
 })
 
 //Delete an item
-router.delete('/:id',(req,res)=>{
+router.delete('/user/:id',(req,res)=>{
     User.findById(req.params.id)    //extracting id from the request url
         .then((item)=>item.remove().then(()=>res.json({success:true}))) 
         .catch(()=>res.status(404).json({sucess:false}));   
