@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import BlogContainer from './components/BlogContainer';
 import LoginForm from './components/LoginForm';
-
+import axios from 'axios';
 class App extends React.Component {
     state = {
         name:"",
@@ -17,20 +17,54 @@ class App extends React.Component {
         });
     };
 
-    authenticate = (admin) => {
-       if(admin){
+    authenticate = (login) => {
+        const user = {
+            email:this.state.email,
+            password:this.state.password
+        };
+       if(login){
            console.log(this.state.email,this.state.password)
-           if(this.state.email==="admin" && this.state.password==="admin")
-           {
-                this.setState({route:"admin"})
-           }  
-         else
-           {
-             alert("Wrong login credentials! Please try again");
-           }  
+        //    if(this.state.email==="admin" && this.state.password==="admin")
+        //    {
+        //         this.setState({route:"admin"})
+        //    }  
+        //  else
+        //    {
+        //      alert("Wrong login credentials! Please try again");
+        //    } 
+        
+        axios
+          .post(`/api/authenticate`,user)
+          .then(res => {
+            if (res.status === 200) {
+                this.setState({route:"blog"})
+            } else {
+              const error = new Error(res.error);
+              throw error;
+            }
+          })
+          .catch(err => {
+            console.error(err);
+            alert('Error logging in please try again/register');
+          });
+        
        }
        else{
-           this.setState({route:"blog"})
+        axios
+        .post(`/api/register`,user)
+        .then(res => {
+          if (res.status === 200) {
+              alert("Registered Successfully! Welcome to Blog Planet ")
+              this.setState({route:"blog"})
+          } else {
+            const error = new Error(res.error);
+            throw error;
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          alert('Error logging in please try again with another email-id');
+        });
        }
     }
   render(){

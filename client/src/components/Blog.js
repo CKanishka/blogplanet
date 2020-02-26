@@ -1,12 +1,19 @@
 import React from 'react';
-
+import InputModal from './InputModal';
 class Blog extends React.Component {
     state={
+        modal:false,
         isOpen:false
     }
     toggle = () => {
         this.setState({isOpen:!this.state.isOpen})
-    }
+    };
+    showModal = () => {
+        this.setState({ modal: true });
+    };
+    hideModal = () => {
+        this.setState({ modal: false });
+    };
     render(){
         return(
     
@@ -40,7 +47,9 @@ class Blog extends React.Component {
                         
                         {/* <a className="button-link" href="/blog-details">Read More<i class="fa fa-angle-right" aria-hidden="true"></i></a> */}
                     </div>
+                    <button className="start_button mt-5 mr-0 btn-warning" style={{display:this.props.edit}} onClick={this.showModal}>Start Editing</button>
                 </div>
+                <InputModal modal={this.state.modal} handleClose={this.hideModal}  id={this.props.id} name={this.props.author} email={this.props.email} content={this.props.desc} title={this.props.title} genre={this.props.genre} edit={true}/>
             </div>
                     
         );
