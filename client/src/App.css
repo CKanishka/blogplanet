@@ -104,6 +104,20 @@ img {
     background: #719dee;
     cursor: pointer;
 }
+.btn-yellow{
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: black;
+    padding: 7px 10px;
+    font-weight: bold;
+    border-radius: 4px;
+    font-size: 18px;
+    border: 1px ;
+}
+.btn-yellow:hover{
+    background: #f5d576;
+    cursor: pointer;
+}
 
 .blog-button{
     color:#007bff;;

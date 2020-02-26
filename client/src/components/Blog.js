@@ -15,6 +15,7 @@ class Blog extends React.Component {
         this.setState({ modal: false });
     };
     render(){
+        var showEdit = this.props.edit?"block":"none";
         return(
     
             <div className="iq-blog-box" >
@@ -47,7 +48,7 @@ class Blog extends React.Component {
                         
                         {/* <a className="button-link" href="/blog-details">Read More<i class="fa fa-angle-right" aria-hidden="true"></i></a> */}
                     </div>
-                    <button className="start_button mt-5 mr-0 btn-warning" style={{display:this.props.edit}} onClick={this.showModal}>Start Editing</button>
+                    <button className="mt-5 mr-0 btn-yellow" style={{display:showEdit}} onClick={this.showModal}>Start Editing</button>
                 </div>
                 <InputModal modal={this.state.modal} handleClose={this.hideModal}  id={this.props.id} name={this.props.author} email={this.props.email} content={this.props.desc} title={this.props.title} genre={this.props.genre} edit={true}/>
             </div>
