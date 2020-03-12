@@ -8,6 +8,7 @@ class App extends React.Component {
         name:"",
         email:"",
         password:"",
+        password2:"",
         address:"",
         route:"login"
     }
@@ -50,6 +51,10 @@ class App extends React.Component {
         
        }
        else{
+        if(this.state.password!==this.state.password2){
+             alert("Your passwords do not match, please make sure both passwords match.")
+             return   
+        }
         axios
         .post(`/api/register`,user)
         .then(res => {

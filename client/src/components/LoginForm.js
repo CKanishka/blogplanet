@@ -26,6 +26,8 @@ export default class LoginForm extends React.Component{
                                 <input type="text" name="email" className="form-control text " placeholder="Enter your email-id" onChange={this.props.onChange} required/>
                                 <label>Password</label>
                                 <input type="password" name="password" className="form-control text " placeholder="Enter your password" onChange={this.props.onChange} required/>
+                                <label>Confirm Password</label>
+                                <input type="password" name="password2" className="form-control text " placeholder="Re-Enter your password" onChange={this.props.onChange} required/>
                                 <input type="submit" className="btn btn-primary mb-4 " value="Register"/>
                             </form>:
                             <form onSubmit={this.onSubmit}>
