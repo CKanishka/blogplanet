@@ -1,19 +1,26 @@
-import React from 'react';
+import React from "react";
+import { GenresList } from "../Constants";
 
-export default class Genres extends React.Component{
-    handleClick = (genre) => {
-        this.props.filterGenre(genre)
-    }
-    render(){
-        return(
-            <div id="categories" className="widget">
-                <h2 className="widget-title">Genres</h2>
-                {this.props.genres.map((genre,index)=>
-                <ul key={index}>
-                    <li style={{color:"#007bff",cursor:"pointer"}} onClick={(event) => this.handleClick(genre)}> {genre} </li>
-                </ul>)}
-            </div>
-        );
-    }
-
+export default class Genres extends React.Component {
+  handleClick = (genre) => {
+    this.props.filterGenre(genre);
+  };
+  render() {
+    return (
+      <div id="categories" className="widget">
+        <h2 className="widget-title">Genres</h2>
+        <ul className="list-group list-group-flush rounded">
+          {GenresList.map((genre, index) => (
+            <li
+              key={index}
+              onClick={() => this.handleClick(genre)}
+              className={`list-group-item list-group-item-action cp ${this.props.activeGenre===genre?'active':''}`}
+            >
+              {genre}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
 }
