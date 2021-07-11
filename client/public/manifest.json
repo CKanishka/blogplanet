@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Blog Planet",
+  "name": "Blog Planet: Planet of awesome writings",
   "icons": [
     {
       "src": "favicon.ico",
