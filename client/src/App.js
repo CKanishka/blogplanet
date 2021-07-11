@@ -28,7 +28,7 @@ class App extends React.Component {
     };
     if (login) {
       axios
-        .post(`http://localhost:5001/api/authenticate`, user)
+        .post(`/api/authenticate`, user)
         .then((res) => {
           if (res.status === 200) {
             this.setState({ route: "blog", name: res.data.name });
@@ -51,7 +51,7 @@ class App extends React.Component {
         return;
       }
       axios
-        .post(`http://localhost:5001/api/register`, user)
+        .post(`/api/register`, user)
         .then((res) => {
           if (res.status === 200) {
             alert("Registered Successfully! Welcome to Blog Planet ");

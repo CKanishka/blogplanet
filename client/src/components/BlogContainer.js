@@ -16,7 +16,7 @@ class Blog_Container extends React.Component {
   };
 
   componentDidMount() {
-    axios.get(`http://localhost:5001/api`).then((res) => {
+    axios.get(`/api`).then((res) => {
       this.setState({ blogs: res.data });
     });
   }
@@ -31,7 +31,7 @@ class Blog_Container extends React.Component {
 
   addBlog = (item) => {
     axios
-      .post(`http://localhost:5001/api`, item)
+      .post(`/api`, item)
       .then((res) => {
         alert(`Hi, ${item.name} your blog has been published`);
         this.setState(
@@ -49,7 +49,7 @@ class Blog_Container extends React.Component {
 
   updateBlog = (item, id) => {
     axios
-      .put(`http://localhost:5001/api/${id}`, item)
+      .put(`/api/${id}`, item)
       .then((res) => {
         alert(`Hi, ${item.name} your blog has been edited.`);
         this.setState(
